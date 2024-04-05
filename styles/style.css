@@ -13,9 +13,12 @@ html {
   block-size: 100%;
   margin: auto;
   color: #fff;
-  font-family: 'Fira Sans Condensed', sans-serif;
+  font-family: "Fira Sans Condensed", sans-serif;
   font-size: 18px;
   background-color: #1b1919;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
 h1,
@@ -35,4 +38,112 @@ fieldset {
 ul,
 ol {
   list-style: none;
+}
+
+/* *,
+*::before,
+*::after {
+  outline: 1px solid red;
+} */
+
+/* Для Firefox */
+.content__list {
+  scrollbar-width: none; /* Скрывает полосу прокрутки в Firefox */
+}
+
+/* Для WebKit-браузеров */
+.content__list::-webkit-scrollbar {
+  display: none; /* Скрывает полосу прокрутки в WebKit-браузерах */
+}
+
+/* Для IE и Edge */
+.content__list {
+  -ms-overflow-style: none; /* Скрывает полосу прокрутки в IE и Edge */
+}
+
+fieldset {
+  border: none; /* Убираем границу */
+}
+
+.content {
+  display: flex;
+  justify-content: end;
+  margin: 0 auto; /* Добавлено для центрирования */
+  gap: 30px;
+  box-sizing: border-box;
+}
+.content__list {
+  display: flex;
+  height: 298px; /* Устанавливаем высоту блока */
+  position: relative;
+  flex-direction: column; /* Устанавливаем направление содержимого в колонку */
+  overflow-y: scroll; /* Включаем вертикальную прокрутку по необходимости */
+}
+
+.content__details {
+  inline-size: 100%;
+}
+
+.search-form {
+  display: flex;
+  justify-content: space-between;
+}
+
+.search__form-container {
+  width: 225px;
+}
+
+.search-form__submit-button {
+  align-self: flex-start;
+}
+
+.result {
+  display: flex;
+  flex-direction: column;
+  justify-content: end;
+  gap: 16px;
+}
+
+.result__video-container {
+  /*position: relative;*/
+  inline-size: 711px;
+  block-size: 386px;
+}
+
+.result__video {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.content__list-item:not(:last-child) {
+  margin-bottom: 30px;
+}
+
+.content__video-card-description-container {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  gap: 6px;
+}
+
+.content__video-card-description {
+  font-family: "Fira Sans Condensed", sans-serif;
+  font-size: 18px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: 16.2px;
+}
+
+.content__video-card {
+  display: flex;
+  align-items: start;
+  /*justify-content: space-between*/
+}
+
+.content__video-card-thumbnail {
+  width: 194px;
+  height: 103px;
+  object-fit: cover;
+  object-position: center;
 }
