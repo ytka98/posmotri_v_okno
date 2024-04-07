@@ -40,12 +40,17 @@ ol {
   list-style: none;
 }
 
-/* *,
+/** *,
 *::before,
 *::after {
   outline: 1px solid red;
 } */
 
+fieldset {
+  border: none; /* Убираем границу */
+}
+
+/* СТИЛИ СКРОЛЛБАРА */
 /* Для Firefox */
 .content__list {
   scrollbar-width: none; /* Скрывает полосу прокрутки в Firefox */
@@ -61,32 +66,15 @@ ol {
   -ms-overflow-style: none; /* Скрывает полосу прокрутки в IE и Edge */
 }
 
-fieldset {
-  border: none; /* Убираем границу */
-}
-
-.content {
-  display: flex;
-  justify-content: end;
-  margin: 0 auto; /* Добавлено для центрирования */
-  gap: 30px;
-  box-sizing: border-box;
-}
-.content__list {
-  display: flex;
-  height: 298px; /* Устанавливаем высоту блока */
-  position: relative;
-  flex-direction: column; /* Устанавливаем направление содержимого в колонку */
-  overflow-y: scroll; /* Включаем вертикальную прокрутку по необходимости */
-}
-
-.content__details {
-  inline-size: 100%;
-}
-
+/* СТИЛИ ФОРМ И КНОПОК*/
 .search-form {
   display: flex;
   justify-content: space-between;
+}
+
+.search-form__fieldset-title {
+  font-size: 19px;
+  font-weight: 400;
 }
 
 .search__form-container {
@@ -97,6 +85,63 @@ fieldset {
   align-self: flex-start;
 }
 
+/* СТИЛИ КОНТЕНТНЫХ БЛОКОВ */
+.content {
+  display: flex;
+  justify-content: end;
+  margin: 0 auto; /* Добавлено для центрирования */
+  gap: 32px;
+  box-sizing: border-box;
+}
+
+.content__list {
+  display: flex;
+  height: 298px; /* Устанавливаем высоту блока */
+  position: relative;
+  flex-direction: column; /* Устанавливаем направление содержимого в колонку */
+  overflow-y: scroll; /* Включаем вертикальную прокрутку по необходимости */
+}
+
+.content__list-item:not(:last-child) {
+  margin-bottom: 29px;
+}
+
+.title {
+  font-family: "Oswald", sans-serif;
+  color: rgba(255, 255, 255, 1);
+  font-weight: 700;
+  font-size: 75px;
+  line-height: 70.5px;
+  text-transform: uppercase;
+}
+
+.content__accent {
+  color: rgba(84, 80, 80, 1);
+}
+
+.content__card-link {
+  display: block;
+  text-decoration: none;
+  color: rgba(255, 255, 255, 1);
+}
+
+/* СТИЛИ ВИДЕО КОНТЕЙНЕРОВ И ОПИСАНИЙ */
+.content__video-card-title {
+  font-family: "Oswald", sans-serif;
+  font-size: 30px;
+  font-style: normal;
+  font-weight: 700;
+  line-height: 100%;
+  text-transform: uppercase;
+}
+
+.content__video-card-description-container {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  gap: 6px;
+}
+
 .result {
   display: flex;
   flex-direction: column;
@@ -105,9 +150,9 @@ fieldset {
 }
 
 .result__video-container {
-  /*position: relative;*/
-  inline-size: 711px;
-  block-size: 386px;
+  position: relative;
+  width: 711px;
+  height: 386px;
 }
 
 .result__video {
@@ -116,15 +161,11 @@ fieldset {
   object-fit: cover;
 }
 
-.content__list-item:not(:last-child) {
-  margin-bottom: 30px;
-}
-
-.content__video-card-description-container {
+.content__details {
   display: flex;
   flex-direction: column;
-  width: 100%;
-  gap: 6px;
+  height: 100%;
+  gap: 32px;
 }
 
 .content__video-card-description {
@@ -142,8 +183,8 @@ fieldset {
 }
 
 .content__video-card-thumbnail {
-  width: 194px;
-  height: 103px;
+  inline-size: 194px;
+  block-size: 103px;
   object-fit: cover;
   object-position: center;
 }
