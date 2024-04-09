@@ -5,11 +5,12 @@
 }
 
 html {
-  block-size: 100%;
+  width: 100%;
+  height: 100%;
 }
 
 .page {
-  inline-size: 1200px;
+  inline-size: 100%;
   block-size: 100%;
   margin: auto;
   color: #fff;
@@ -40,17 +41,28 @@ ol {
   list-style: none;
 }
 
-/** *,
+/* * *,
 *::before,
 *::after {
   outline: 1px solid red;
-} */
+} *  */
+
+.visually-hidden {
+  position: absolute;
+  inline-size: 1px;
+  block-size: 1px;
+  overflow: hidden;
+  clip: rect(0 0 0 0);
+  clip-path: inset(50%);
+  white-space: nowrap;
+}
 
 fieldset {
   border: none; /* Убираем границу */
 }
 
-/* СТИЛИ СКРОЛЛБАРА */
+/* ================================================================================  СТИЛИ СКРОЛЛБАРА 
+================================================================================*/
 /* Для Firefox */
 .content__list {
   scrollbar-width: none; /* Скрывает полосу прокрутки в Firefox */
@@ -72,20 +84,147 @@ fieldset {
   justify-content: space-between;
 }
 
-.search-form__fieldset-title {
-  font-size: 19px;
-  font-weight: 400;
+.search-form__checkbox-list {
+  display: flex;
+  /*box-sizing: border-box;*/
+  gap: 15px;
 }
 
-.search__form-container {
-  width: 225px;
+.search-form__textfield {
+  font-size: 18px;
+  font-weight: 400;
+  line-height: 21.6px;
+  text-align: left;
+  background-color: transparent;
+  inline-size: 88.5%;
+  /* inline-size: 225px; */
+  border-top: 1px solid rgba(255, 255, 255, 1);
+  border-right: none;
+  border-bottom: 1px solid rgba(255, 255, 255, 1);
+  border-left: none;
+  padding: 2px 0;
+  color: rgba(255, 255, 255, 0.7);
+  font-family: "Fira Sans Condensed", sans-serif;
 }
 
 .search-form__submit-button {
   align-self: flex-start;
 }
 
-/* СТИЛИ КОНТЕНТНЫХ БЛОКОВ */
+/* 
+=============================================================================
+  СТИЛИ ПОЛЕЙ (ЧЕКБОКС)
+=============================================================================
+*/
+
+.search-form__fieldset {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  border: none;
+  inline-size: 100%;
+}
+
+.search-form__fieldset:nth-of-type(2) {
+  margin-left: 1.8%;
+}
+
+.search-form__fieldset-title {
+  font-weight: 400;
+  font-size: 18px;
+}
+
+/* Класс .search-form__pseudo-checkbox предназначен для создания пользовательского визуального представления чекбокса, позволяя стилизовать его в соответствии с общим дизайном формы. Это особенно полезно, когда стандартные чекбоксы не соответствуют дизайну сайта. 
+*/
+.search-form__pseudo-checkbox {
+  display: block;
+  border: 1px solid #fff;
+  inline-size: 19px;
+  block-size: 19px;
+}
+
+/* Селектор целевого псевдоэлемента ::after используется для отображения галочки или другого индикатора в пользовательском чекбоксе, когда он находится в состоянии "выбрано". Это добавляет четкость и визуальную обратную связь для пользователя, подтверждая выбор. */
+.search-form__checkbox:checked + .search-form__pseudo-checkbox::after {
+  content: "";
+  display: block;
+  background-color: #fff;
+  inline-size: 15px;
+  block-size: 15px;
+  margin: 1px 0 0 1px;
+}
+
+.search-form__label {
+  display: flex;
+  align-items: center;
+  gap: 5px;
+  cursor: pointer;
+}
+
+.search-form__label:hover {
+  text-decoration: underline 1px #fff;
+  text-underline-offset: 5px;
+}
+
+.search-form__label:has(:focus-visible) {
+  outline: 1px solid #fff;
+  outline-offset: 1px;
+}
+
+.search-form__checkbox-list {
+  display: flex;
+  gap: 15px;
+}
+
+/* 
+=============================================================================
+  СТИЛЬ КНОПКИ "НАЙТИ"
+=============================================================================
+*/
+
+.button {
+  background: transparent;
+  border: 1px solid rgba(255, 255, 255, 1);
+  color: rgba(255, 255, 255, 1);
+  text-align: center;
+  font-family: "Fira Sans Condensed";
+  font-weight: 700;
+  font-size: 18px;
+  line-height: 21.6px;
+  height: 34px;
+}
+
+.button:focus-visible {
+  outline: 1px solid #fff;
+  outline-offset: -3px;
+}
+
+.button:focus-visible {
+  outline: 1px solid #fff;
+  outline-offset: -3px;
+}
+
+.button:hover {
+  text-decoration-line: underline;
+  cursor: pointer;
+}
+
+.button:active {
+  background-color: #545050;
+}
+
+.search-form__submit-button {
+  align-self: flex-end;
+  inline-size: 73%;
+}
+
+.title {
+  margin-top:;
+}
+
+/* ================================================================================
+  СТИЛИ КОНТЕНТНЫХ БЛОКОВ 
+================================================================================
+*/
 .content {
   display: flex;
   justify-content: end;
@@ -125,7 +264,11 @@ fieldset {
   color: rgba(255, 255, 255, 1);
 }
 
-/* СТИЛИ ВИДЕО КОНТЕЙНЕРОВ И ОПИСАНИЙ */
+/* 
+=============================================================================
+  СТИЛИ ВИДЕО КОНТЕЙНЕРОВ И ОПИСАНИЙ 
+=============================================================================
+*/
 .content__video-card-title {
   font-family: "Oswald", sans-serif;
   font-size: 30px;
@@ -165,7 +308,7 @@ fieldset {
   display: flex;
   flex-direction: column;
   height: 100%;
-  gap: 32px;
+  gap: 22px;
 }
 
 .content__video-card-description {
