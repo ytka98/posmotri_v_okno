@@ -279,7 +279,7 @@ input:focus-visible {
 }
 
 .content__card-link_current {
-  background-color: #545050;
+  background-color: rgba(84, 80, 80, 1);
 }
 
 .content__card-link:active {
