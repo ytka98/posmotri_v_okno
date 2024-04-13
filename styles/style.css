@@ -40,14 +40,14 @@ ul,
 ol {
   list-style: none;
 }
-/* 
-* *,
+
+/* * *,
 *::before,
 *::after {
   outline: 1px solid red;
-} *   */
+} */
 
-.visually-hidden {
+* .visually-hidden {
   position: absolute;
   inline-size: 1px;
   block-size: 1px;
@@ -59,23 +59,6 @@ ol {
 
 fieldset {
   border: none; /* Убираем границу */
-}
-
-/* ================================================================================  УБИРАЕМ СКРОЛЛ 
-================================================================================*/
-/* Для Firefox */
-.content__list {
-  scrollbar-width: none; /* Скрывает полосу прокрутки в Firefox */
-}
-
-/* Для WebKit-браузеров */
-.content__list::-webkit-scrollbar {
-  display: none; /* Скрывает полосу прокрутки в WebKit-браузерах */
-}
-
-/* Для IE и Edge */
-.content__list {
-  -ms-overflow-style: none; /* Скрывает полосу прокрутки в IE и Edge */
 }
 
 /* 
@@ -90,7 +73,6 @@ fieldset {
 
 .search-form__checkbox-list {
   display: flex;
-  /*box-sizing: border-box;*/
   gap: 15px;
 }
 
@@ -100,6 +82,7 @@ fieldset {
   line-height: 21.6px;
   text-align: left;
   background-color: transparent;
+  appearance: none; /* Убираем стандартное отображение в Safari и Chrome. Хорошая практика дополнительно указывать appearance: none; чтобы наше поле отображалось более предсказуемо во всех возможных браузерах.*/
   inline-size: 225px;
   border-top: 1px solid rgba(255, 255, 255, 1);
   border-right: none;
@@ -132,11 +115,7 @@ input:focus-visible {
   flex-direction: column;
   gap: 6px;
   border: none;
-  inline-size: 100%;
-}
-
-.search-form__fieldset:nth-of-type(2) {
-  margin-left: 1.8%;
+  width: fit-content;
 }
 
 .search-form__fieldset-title {
@@ -147,7 +126,9 @@ input:focus-visible {
 /* Класс .search-form__pseudo-checkbox предназначен для создания пользовательского визуального представления чекбокса, позволяя стилизовать его в соответствии с общим дизайном формы. Это особенно полезно, когда стандартные чекбоксы не соответствуют дизайну сайта. 
 */
 .search-form__pseudo-checkbox {
-  display: block;
+  display: flex; /* Добавляем flexbox */
+  justify-content: center; /* Центрируем по горизонтали */
+  align-items: center; /* Центрируем по вертикали */
   border: 1px solid rgba(255, 255, 255, 1);
   inline-size: 19px;
   block-size: 19px;
@@ -160,7 +141,7 @@ input:focus-visible {
   background-color: rgba(255, 255, 255, 1);
   inline-size: 15px;
   block-size: 15px;
-  margin: 1px 0 0 1px;
+  /* margin: 1px 0 0 1px; */
 }
 
 .search-form__label {
@@ -168,10 +149,6 @@ input:focus-visible {
   align-items: center;
   gap: 5px;
   cursor: pointer;
-}
-
-.search-form__label:active {
-  border: 1px solid rgba(255, 255, 255, 1);
 }
 
 .search-form__label:hover {
@@ -183,10 +160,6 @@ input:focus-visible {
   outline: 1px solid rgba(255, 255, 255, 1);
   outline-offset: -3px;
 }
-.search-form__checkbox-list {
-  display: flex;
-  gap: 15px;
-}
 
 /* 
 =============================================================================
@@ -196,10 +169,10 @@ input:focus-visible {
 
 .button {
   background: transparent;
-  border: 1px solid rgba(255, 255, 255, 1);
-  color: rgba(255, 255, 255, 1);
+  border: 1px solid currentColor;
+  color: currentColor;
   text-align: center;
-  font-family: "Fira Sans Condensed";
+  font-family: "Fira Sans Condensed", sans-serif;
   font-weight: 700;
   font-size: 18px;
   line-height: 21.6px;
@@ -207,7 +180,7 @@ input:focus-visible {
 }
 
 .button:focus-visible {
-  outline: 1px solid  rgb(255, 255, 255);
+  outline: 1px solid rgb(255, 255, 255);
   outline-offset: -3px;
 }
 
@@ -222,12 +195,7 @@ input:focus-visible {
 
 .search-form__submit-button {
   align-self: flex-end;
-  inline-size: 73%;
-}
-
-.search-form__submit-button:active {
-  outline: 1px solid rgba(255, 255, 255, 1);
-  outline-offset: 1px;
+  width: 194px;
 }
 
 /* ================================================================================
@@ -238,7 +206,7 @@ input:focus-visible {
   display: flex;
   justify-content: end;
   margin: 0 auto; /* Добавлено для центрирования */
-  gap: 32px;
+  gap: 28px;
   box-sizing: border-box;
 }
 
@@ -247,7 +215,7 @@ input:focus-visible {
   height: 298px; /* Устанавливаем высоту блока */
   position: relative;
   flex-direction: column;
-  overflow-y: scroll; /* Включаем вертикальную прокрутку по необходимости */
+  overflow-y: auto; /* Чтобы скролл отображался только при необходимости указывайте значение auto. Значение scroll устанавливает его принудительно, даже если результаты поиска будут нулевыми. */
 }
 
 .content__list-item:not(:last-child) {
@@ -255,6 +223,7 @@ input:focus-visible {
 }
 
 .title {
+  margin-left: 1%;
   font-family: "Oswald", sans-serif;
   color: rgba(255, 255, 255, 1);
   font-weight: 700;
@@ -283,8 +252,7 @@ input:focus-visible {
 }
 
 .content__card-link:active {
-  outline: 1px solid rgba(255, 255, 255, 1);
-  outline-offset: -1px;
+  background-color: rgba(84, 80, 80, 1);
 }
 
 .content__card-link:focus-visible {
@@ -302,7 +270,14 @@ input:focus-visible {
   font-style: normal;
   font-weight: 700;
   line-height: 100%;
+  margin-left: 1%;
+  margin-top: 2%;
   text-transform: uppercase;
+  hyphens: auto; /* Добавил свойство для переноса строк, которое сработало. Пробовал cюда добавить многоточие при переполненности,
+              white-space: nowrap; 
+              overflow: hidden; 
+              text-overflow: ellipsis; 
+  но оно не применялось */
 }
 
 .content__video-card-description-container {
@@ -343,7 +318,8 @@ input:focus-visible {
   font-family: "Fira Sans Condensed", sans-serif;
   font-size: 18px;
   font-style: normal;
-  font-weight: 400;
+  max-width: 400px; /* Заменяем width на max-width */
+  width: 100%; /* Добавляем width: 100% */
   line-height: 16.2px;
 }
 
